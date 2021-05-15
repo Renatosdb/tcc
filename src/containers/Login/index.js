@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Login.css';
 import { Link, useHistory } from "react-router-dom";
-import { auth } from '../../firebase';
+import { auth, facebookAuthProvider } from '../../firebase';
 import { FacebookLoginButton } from 'react-social-login-buttons';
 
 function Login() {
@@ -10,7 +10,7 @@ function Login() {
     const [password, setPassword] = useState("");
 
     const login = (event) => {
-        event.preventDefault(); // prevenir a pagina de refresh
+        event.preventDefault();
 
         auth.signInWithEmailAndPassword(email, password)
             .then((auth) => {
@@ -20,14 +20,25 @@ function Login() {
     };
 
     const register = (event) => {
-        event.preventDefault(); // prevenir a pagina de refresh
+        event.preventDefault();
 
         auth.createUserWithEmailAndPassword(email, password)
             .then((auth) => {
-                history.push("/");
+                console.log('auth', auth)
+                // history.push("/");
             })
             .catch((e) => alert(e.message));
     };
+
+    const signInWithFacebook = () => {
+        auth.signInWithPopup(facebookAuthProvider)
+            .then(() => {
+                window.location.assign("/");
+            })
+            .catch(error => {
+                console.error(error);
+            })
+    }
 
     return (
         <div className="login">
@@ -51,7 +62,7 @@ function Login() {
 
                 <button onClick={register} className="login__registerButton">
                     Criar nova conta</button>
-                <FacebookLoginButton className="mt-3 mb-3" />
+                <FacebookLoginButton className="mt-3 mb-3" onClick={signInWithFacebook} />
             </div>
         </div>
     );

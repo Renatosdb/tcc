@@ -28,7 +28,7 @@ function CheckoutProduct({ id, title, image, price, rating }) {
                     {Array(rating)
                         .fill()
                         .map((_, i) => (
-                            <p>&#9889;</p>
+                            <p key={`index-${i}`}>&#9889;</p>
                         ))}
                 </div>
 

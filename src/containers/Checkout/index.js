@@ -22,22 +22,23 @@ function Checkout() {
                         "Adicionar ao carrinho abaixo do item que voce gostaria de levar."</p>
                     </div>
                 ) : (
-                        <div>
-                            <h2 className="checkout__title">Seu carrinho</h2>
+                    <div>
+                        <h2 className="checkout__title">Seu carrinho</h2>
 
-                            {/* Listar todos os produtos no checkout */}
-                            {basket?.map(item => (
-                                <CheckoutProduct
-                                    id={item.id}
-                                    title={item.title}
-                                    image={item.image}
-                                    price={item.price}
-                                    rating={item.rating}
-                                />
-                            ))}
+                        {/* Listar todos os produtos no checkout */}
+                        {basket?.map((item, index) => (
+                            <CheckoutProduct
+                                key={`checkoutProduct-${index}`}
+                                id={item.id}
+                                title={item.title}
+                                image={item.image}
+                                price={item.price}
+                                rating={item.rating}
+                            />
+                        ))}
 
-                        </div>
-                    )}
+                    </div>
+                )}
             </div>
             {basket.length > 0 && (
                 <div className="checkout__right">

@@ -70,7 +70,7 @@ function Home() {
                     title="Brinco"
                     price={130.99}
                     rating={1}
-                    image="https://blog.stylewe.com/wp-content/uploads/2017/02/ss-090617-jolie-academyawards.today-ss-slide-desktop.jpg"
+                    image="https://kitboxclub.com.br/wp-content/uploads/2020/12/10-511-brinco-argolinha-soda-cap-1-600x600.jpg"
                 />
                 {/* Produtos */}
             </div>
